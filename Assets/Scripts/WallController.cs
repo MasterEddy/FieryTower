@@ -21,17 +21,13 @@ public class WallController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         camera.transform.Translate(moveUp * Time.deltaTime);
-            for (int i = 0; i < walls_bottom.Length && i < walls_top.Length; i++)
+            for (int i = 0; i < walls_bottom.Length; i++)
             {
                 //walls_bottom[i].transform.Translate(-moveUp);
                 //walls_top[i].transform.Translate(-moveUp);
                 if (walls_bottom[i].transform.position.y < camera.transform.position.y - 1f)
                 {
-                    walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, camera.transform.position.y + 0.95f, walls_bottom[i].transform.position.z);
-                }
-                if (walls_top[i].transform.position.y < camera.transform.position.y - 1f)
-                {
-                    walls_top[i].transform.position = new Vector3(walls_top[i].transform.position.x, camera.transform.position.y + 0.95f, walls_top[i].transform.position.z);
+                    walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, camera.transform.position.y + 1.95f, walls_bottom[i].transform.position.z);
                 }
             }
 	}
