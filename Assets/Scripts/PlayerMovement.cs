@@ -24,10 +24,8 @@ public class PlayerMovement : MonoBehaviour {
         // Store the input axes.
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+        // Debug.Log(onGround);
+      
 
         // Move the player around the scene.
         Move(h, v);
@@ -42,6 +40,14 @@ public class PlayerMovement : MonoBehaviour {
             Physics.IgnoreLayerCollision(9, 8, false);
         }
 	}
+
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            Jump();
+        }
+    }
 
     void Move(float h, float v)
     {

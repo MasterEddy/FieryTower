@@ -25,7 +25,7 @@ public class WallController : MonoBehaviour {
             {
                 //walls_bottom[i].transform.Translate(-moveUp);
                 //walls_top[i].transform.Translate(-moveUp);
-                if (walls_bottom[i].transform.position.y < camera.transform.position.y - 1f)
+                if (walls_bottom[i].transform.position.y < camera.transform.position.y - 7f)
                 {
                     walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, camera.transform.position.y + 1.95f, walls_bottom[i].transform.position.z);
                 }
