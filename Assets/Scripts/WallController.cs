@@ -7,7 +7,7 @@ public class WallController : MonoBehaviour {
     public GameObject[] walls_top;
     public GameObject camera;
     public Vector3 moveUp;
-    public float SPEED = 0.01f;
+    public float SPEED = 0.1f;
 	// Use this for initialization
 	void Start () {
         moveUp = new Vector3(0f, 1f, 0f)*SPEED;
