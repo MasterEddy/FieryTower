@@ -28,6 +28,16 @@ public class PlayerMovement : MonoBehaviour {
 
         // Move the player around the scene.
         Move(h, v);
+
+        // Check for vertical movement
+        if (playerRigidbody.velocity.y > 0)
+        {
+            Physics.IgnoreLayerCollision(9, 8, true);
+        }
+        else
+        {
+            Physics.IgnoreLayerCollision(9, 8, false);
+        }
 	}
 
     void Move(float h, float v)
@@ -51,11 +61,12 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void OnCollisionEnter(Collision col)
+ void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.layer == 8)
         {
             onGround = true;
         }
     }
+  
 }
