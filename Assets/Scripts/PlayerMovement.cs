@@ -3,16 +3,19 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
+    public GameObject deathPlatform;
+
     public float speed = 1f;
     public float jumpSpeed = 6f;
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     bool onGround = false;
+    
 
 	// Use this for initialization
 	void Start () {
         playerRigidbody = GetComponent<Rigidbody>();
-	
+        deathPlatform = GameObject.Find("death_platform");
 	}
 	
 	// Update is called once per frame
@@ -66,6 +69,13 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.layer == 8)
         {
             onGround = true;
+        }
+
+        // Check for player death if too low
+        if (col.gameObject.tag.Equals("death_platform"))
+        {
+            Debug.Log("You DIED");
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
   
