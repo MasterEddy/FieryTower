@@ -20,7 +20,7 @@ public class WallController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        camera.transform.Translate(moveUp);
+        camera.transform.Translate(moveUp * Time.deltaTime);
             for (int i = 0; i < walls_bottom.Length && i < walls_top.Length; i++)
             {
                 //walls_bottom[i].transform.Translate(-moveUp);
