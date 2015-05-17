@@ -11,7 +11,7 @@ public class WallController : MonoBehaviour {
 	void Start () {
         walls_bottom = new GameObject[12];
         walls_bottom = GameObject.FindGameObjectsWithTag("Wall0");
-        //camera = GameObject.Find("Main Camera");
+        camera = GameObject.Find("Main Camera");
         camera_component = GetComponent<Camera>();
     }
 	
