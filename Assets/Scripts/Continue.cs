@@ -10,7 +10,7 @@ public class Continue : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown("return"))
         {
 
             GameObject.Find("Canvas").SendMessage("hideScoreScreen");
