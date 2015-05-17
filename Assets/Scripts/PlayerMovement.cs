@@ -93,7 +93,8 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.tag.Equals("death_platform"))
         {
             Debug.Log("You DIED");
-            Application.LoadLevel(Application.loadedLevel);
+            GameObject.Find("Canvas").SendMessage("ScoreScreen");
+            //Application.LoadLevel(Application.loadedLevel);
         }
     }
   
