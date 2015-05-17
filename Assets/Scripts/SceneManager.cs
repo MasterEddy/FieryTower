@@ -34,6 +34,7 @@ public class SceneManager : MonoBehaviour {
         {
             // Yield coroutine
             yield return new WaitForSeconds(timer);
+            timer -= 0.2f;
             if (platforms[numPlatform] != null)
             {
                 GameObject gObject = platforms[numPlatform];
