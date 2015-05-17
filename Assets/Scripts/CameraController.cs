@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public GameObject camera;
     public float SPEED = 0.1f;
     public Vector3 moveUp;
-    public Vector3 addSpeed;
+    public Vector3 addSpeed = new Vector3(0f, 0.1f, 0f);
 
     float accumulator = 0.0f;
     float waitTime = 1.0f;
@@ -19,7 +19,6 @@ public class CameraController : MonoBehaviour
     {
         moveUp = new Vector3(0f, 1f, 0f) * SPEED;
         camera = GameObject.Find("Main Camera");
-        addSpeed = new Vector3(0f, 0.1f, 0f);
     }
 
     // Update is called once per frame
