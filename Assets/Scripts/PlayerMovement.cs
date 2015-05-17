@@ -81,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.tag.Equals("death_platform"))
         {
             Debug.Log("You DIED");
-            Application.LoadLevel(Application.loadedLevel);
+            //Application.LoadLevel(Application.loadedLevel);
         }
     }
   
