@@ -15,7 +15,7 @@ public class WallController : MonoBehaviour {
     public float maxheight = 2;
     public float torchDistance = 12;
 
-    int platformsOnWall = 1;
+    int platformsOnWall = 4;
     GameObject[] platforms = new GameObject[50];
     int numPlatform = 0;
     bool spawnNow = false;
@@ -37,6 +37,7 @@ public class WallController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         //float viewPos = camera_component.WorldToViewportPoint()
+        spawnNow = false;
         for (int i = 0; i < walls_bottom.Length; i++)
         {
             float obj_extent = GetObjectExtents(walls_bottom[i]);
@@ -46,7 +47,8 @@ public class WallController : MonoBehaviour {
             {
                 walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, walls_bottom[i].transform.position.y + obj_extent*2*3, walls_bottom[i].transform.position.z);
                 //Spawn Plattforms
-                spawnNow = true;
+                if(walls_bottom[i].name == "BackWall0" || walls_bottom[i].name == "BackWall1" || walls_bottom[i].name == "BackWall2")
+                    spawnNow = true;
                 minY = walls_bottom[i].transform.position.y - obj_extent;
                 maxY = walls_bottom[i].transform.position.y + obj_extent;
                 
@@ -82,9 +84,7 @@ public class WallController : MonoBehaviour {
         float distance = height / countP;
         for (int j = 0; j < countP; j++)
         {
-            
-
-
+            Debug.Log(countP);
             if (platforms[numPlatform] != null)
             {
                 GameObject gObject = platforms[numPlatform];
