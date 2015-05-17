@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	void Start () {
         playerRigidbody = GetComponent<Rigidbody>();
         deathPlatform = GameObject.Find("death_platform");
+        Physics.gravity = new Vector3(0, -15, 0);
 	}
 	
 	// Update is called once per frame
@@ -81,7 +82,7 @@ public class PlayerMovement : MonoBehaviour {
         if (col.gameObject.tag.Equals("death_platform"))
         {
             Debug.Log("You DIED");
-            //Application.LoadLevel(Application.loadedLevel);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
   
