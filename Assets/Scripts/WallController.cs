@@ -13,11 +13,10 @@ public class WallController : MonoBehaviour {
         walls_bottom = GameObject.FindGameObjectsWithTag("Wall0");
         //camera = GameObject.Find("Main Camera");
         camera_component = GetComponent<Camera>();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        
         //float viewPos = camera_component.WorldToViewportPoint()
         for (int i = 0; i < walls_bottom.Length; i++)
         {
