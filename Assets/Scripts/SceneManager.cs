@@ -6,7 +6,7 @@ public class SceneManager : MonoBehaviour {
     public GameObject platform;
     public float timer = 3.0f;
     float incY = 1;
-    Vector3 start = new Vector3(0f, 2f, 0f);
+    Vector3 start = new Vector3(0f, 2f, -1f);
     bool inGame;
     GameObject[] platforms = new GameObject[20];
     public float maxRight = 2;
