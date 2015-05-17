@@ -5,6 +5,7 @@ public class WallController : MonoBehaviour {
 
     public GameObject[] walls_bottom;
     public GameObject[] walls_top;
+    public GameObject[] torches;
     public GameObject camera;
     Camera camera_component;
 
@@ -12,6 +13,7 @@ public class WallController : MonoBehaviour {
     public float maxRight = 2;
     public float maxLeft = -2;
     public float maxheight = 2;
+    public float torchDistance = 12;
 
     int platformsOnWall = 4;
     GameObject[] platforms = new GameObject[30];
@@ -24,6 +26,9 @@ public class WallController : MonoBehaviour {
         camera = GameObject.Find("Main Camera");
         camera_component = camera.GetComponent<Camera>();
         spawnPlatforms(0f, 18f, 16, 18);
+
+        torches = new GameObject[4];
+        torches = GameObject.FindGameObjectsWithTag("torches");   
     }
 	
 	// Update is called once per frame
@@ -42,6 +47,17 @@ public class WallController : MonoBehaviour {
                 float maxY = walls_bottom[i].transform.position.y + obj_extent;
                 spawnPlatforms(minY, maxY, platformsOnWall, 6);
                 
+            }
+        }
+
+        for (int j = 0; j < torches.Length; j++)
+        {
+            float obj_extent2 = GetObjectExtents(torches[j]);
+            Vector3 target2 = new Vector3(camera.transform.position.x, torches[j].transform.position.y + obj_extent2 + 3f, 0f);
+            Vector3 viewPos2 = camera_component.WorldToViewportPoint(target2);
+            if (viewPos2.y < 0f)
+            {
+                torches[j].transform.position = new Vector3(torches[j].transform.position.x, torches[j].transform.position.y + torchDistance, torches[j].transform.position.z);
             }
         }
 	}
