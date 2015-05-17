@@ -15,7 +15,7 @@ public class WallController : MonoBehaviour {
     public float maxheight = 2;
     public float torchDistance = 12;
 
-    int platformsOnWall = 1;
+    int platformsOnWall = 4;
     GameObject[] platforms = new GameObject[50];
     int numPlatform = 0;
     bool spawnNow = false;
