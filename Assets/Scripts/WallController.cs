@@ -18,6 +18,9 @@ public class WallController : MonoBehaviour {
     int platformsOnWall = 1;
     GameObject[] platforms = new GameObject[50];
     int numPlatform = 0;
+    bool spawnNow = false;
+    float minY = 0;
+    float maxY = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -43,11 +46,16 @@ public class WallController : MonoBehaviour {
             {
                 walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, walls_bottom[i].transform.position.y + obj_extent*2*3, walls_bottom[i].transform.position.z);
                 //Spawn Plattforms
-                float minY = walls_bottom[i].transform.position.y - 2* obj_extent;
-                float maxY = walls_bottom[i].transform.position.y;
-                spawnPlatforms(minY, maxY, platformsOnWall, 6);
+                spawnNow = true;
+                minY = walls_bottom[i].transform.position.y - obj_extent;
+                maxY = walls_bottom[i].transform.position.y + obj_extent;
                 
             }
+        }
+        if (spawnNow)
+        {
+            spawnPlatforms(minY, maxY, platformsOnWall, 6);
+            spawnNow = false;
         }
 
         for (int j = 0; j < torches.Length; j++)
@@ -86,13 +94,14 @@ public class WallController : MonoBehaviour {
             {
                 float prevY = coords.y; 
                 coords = new Vector3(Random.Range(maxLeft, maxRight),prevY + distance, -1);
-
+                Debug.Log("Weiter: " + coords.y.ToString());
             }
             else
             {
                 coords = new Vector3(Random.Range(maxLeft, maxRight), minY + 1, -1);
+                Debug.Log("Anfang: " + coords.y.ToString());
             }
-
+           
             GameObject newObject = Instantiate(platform, coords, platform.transform.rotation) as GameObject;
             newObject.transform.localScale = new Vector3(newObject.transform.localScale.x / Random.Range(0.4f, 3f), newObject.transform.localScale.y, newObject.transform.localScale.z);
             Debug.Log(newObject);
