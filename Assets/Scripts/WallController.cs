@@ -12,7 +12,7 @@ public class WallController : MonoBehaviour {
         walls_bottom = new GameObject[12];
         walls_bottom = GameObject.FindGameObjectsWithTag("Wall0");
         camera = GameObject.Find("Main Camera");
-        camera_component = GetComponent<Camera>();
+        camera_component = camera.GetComponent<Camera>();
     }
 	
 	// Update is called once per frame
