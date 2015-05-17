@@ -14,7 +14,7 @@ public class Continue : MonoBehaviour {
         {
 
             GameObject.Find("Canvas").SendMessage("hideScoreScreen");
-            Application.LoadLevel(Application.loadedLevel);
+            //Application.LoadLevel(Application.loadedLevel);
         }
 	}
 }
