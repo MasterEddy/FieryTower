@@ -4,6 +4,7 @@ using System.Collections;
 public class SceneManager : MonoBehaviour {
 
     public GameObject platform;
+    public CameraController camControl;
     public float timer = 3.0f;
     float incY = 1;
     Vector3 start = new Vector3(0f, 2f, -1f);
