@@ -13,8 +13,8 @@ public class WallController : MonoBehaviour {
     public float maxLeft = -2;
     public float maxheight = 2;
 
-    int platformsOnWall = 4;
-    GameObject[] platforms = new GameObject[30];
+    int platformsOnWall = 1;
+    GameObject[] platforms = new GameObject[50];
     int numPlatform = 0;
 
 	// Use this for initialization
@@ -38,8 +38,8 @@ public class WallController : MonoBehaviour {
             {
                 walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, walls_bottom[i].transform.position.y + obj_extent*2*3, walls_bottom[i].transform.position.z);
                 //Spawn Plattforms
-                float minY = walls_bottom[i].transform.position.y - obj_extent;
-                float maxY = walls_bottom[i].transform.position.y + obj_extent;
+                float minY = walls_bottom[i].transform.position.y - 2* obj_extent;
+                float maxY = walls_bottom[i].transform.position.y;
                 spawnPlatforms(minY, maxY, platformsOnWall, 6);
                 
             }
@@ -82,7 +82,7 @@ public class WallController : MonoBehaviour {
             Debug.Log(newObject);
             platforms[numPlatform] = newObject;
             numPlatform++;
-            numPlatform = numPlatform % 30;
+            numPlatform = numPlatform % 50;
 
         }
     }
