@@ -14,7 +14,7 @@ public class WallController : MonoBehaviour {
     public float maxheight = 2;
 
     int platformsOnWall = 4;
-    GameObject[] platforms = new GameObject[20];
+    GameObject[] platforms = new GameObject[30];
     int numPlatform = 0;
 
 	// Use this for initialization
@@ -54,6 +54,7 @@ public class WallController : MonoBehaviour {
 
     void spawnPlatforms(float minY, float maxY, int countP)
     {
+        Vector3 coords = null;
         for (int j = 0; j < countP; j++)
         {
             
@@ -65,14 +66,17 @@ public class WallController : MonoBehaviour {
                 GameObject gObject = platforms[numPlatform];
                 DestroyImmediate(gObject);
             }
-            Vector3 coords = new Vector3(Random.Range(maxLeft, maxRight), Random.RandomRange(minY, maxY), -1);
+            if (coords != null)
+            {
+                coords = new Vector3(Random.Range(maxLeft, maxRight), Random.RandomRange(minY, maxY), -1);
+            }
 
             GameObject newObject = Instantiate(platform, coords, platform.transform.rotation) as GameObject;
             newObject.transform.localScale = new Vector3(newObject.transform.localScale.x / Random.Range(0.4f, 3f), newObject.transform.localScale.y, newObject.transform.localScale.z);
             Debug.Log(newObject);
             platforms[numPlatform] = newObject;
             numPlatform++;
-            numPlatform = numPlatform % 20;
+            numPlatform = numPlatform % 30;
 
         }
     }
