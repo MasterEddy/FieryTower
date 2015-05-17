@@ -23,7 +23,7 @@ public class WallController : MonoBehaviour {
         walls_bottom = GameObject.FindGameObjectsWithTag("Wall0");
         camera = GameObject.Find("Main Camera");
         camera_component = camera.GetComponent<Camera>();
-        spawnPlatforms(0f, 18f, 16);
+        spawnPlatforms(0f, 18f, 16, 18);
     }
 	
 	// Update is called once per frame
@@ -40,7 +40,7 @@ public class WallController : MonoBehaviour {
                 //Spawn Plattforms
                 float minY = walls_bottom[i].transform.position.y - obj_extent;
                 float maxY = walls_bottom[i].transform.position.y + obj_extent;
-                spawnPlatforms(minY, maxY, platformsOnWall);
+                spawnPlatforms(minY, maxY, platformsOnWall, 6);
                 
             }
         }
@@ -52,23 +52,29 @@ public class WallController : MonoBehaviour {
         return bounds.extents.y;
     }
 
-    void spawnPlatforms(float minY, float maxY, int countP)
+    void spawnPlatforms(float minY, float maxY, int countP, float height)
     {
-        Vector3 coords = null;
+        Vector3 coords = new Vector3(-1,-1,-1);
+        float distance = height / countP;
         for (int j = 0; j < countP; j++)
         {
             
 
-            float y = 6 / countP;
 
             if (platforms[numPlatform] != null)
             {
                 GameObject gObject = platforms[numPlatform];
                 DestroyImmediate(gObject);
             }
-            if (coords != null)
+            if (coords.y != -1)
             {
-                coords = new Vector3(Random.Range(maxLeft, maxRight), Random.RandomRange(minY, maxY), -1);
+                float prevY = coords.y; 
+                coords = new Vector3(Random.Range(maxLeft, maxRight),prevY + distance, -1);
+
+            }
+            else
+            {
+                coords = new Vector3(Random.Range(maxLeft, maxRight), minY + 1, -1);
             }
 
             GameObject newObject = Instantiate(platform, coords, platform.transform.rotation) as GameObject;
