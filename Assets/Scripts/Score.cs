@@ -52,5 +52,6 @@ public class Score : MonoBehaviour {
         es_image.SetActive(false);
         es_score.SetActive(false);
         es_continue.SetActive(false);
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

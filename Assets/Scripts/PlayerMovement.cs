@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             Debug.Log("You DIED");
             GameObject.Find("Canvas").SendMessage("ScoreScreen");
-            //Application.LoadLevel(Application.loadedLevel);
+            
         }
     }
   
