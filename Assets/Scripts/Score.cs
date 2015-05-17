@@ -7,6 +7,7 @@ public class Score : MonoBehaviour {
     public GameObject camera;
     Text score_component;
     int init_height;
+    int score;
 	// Use this for initialization
 	void Start () {
         init_height = (int)camera.transform.position.y;
@@ -15,6 +16,7 @@ public class Score : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    score_component.text = "Score: "+(float)((int)((camera.transform.position.y - init_height)*100))/100;
+        score = (int)((camera.transform.position.y - init_height) * 100);
+	    score_component.text = "Score: "+ score;
 	}
 }
