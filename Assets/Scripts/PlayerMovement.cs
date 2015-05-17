@@ -6,10 +6,13 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject deathPlatform;
 
     public float speed = 1f;
-    public float jumpSpeed = 6f;
+    public float jumpSpeed = 7f;
     Vector3 movement;                   // The vector to store the direction of the player's movement.
     Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
     bool onGround = false;
+    float accumulator = 0.0f;
+    float waitTime = 1.0f;
+    float jumpSpeedAdd = 0.1f;
     
 
 	// Use this for initialization
@@ -47,6 +50,14 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetKeyDown("space"))
         {
             Jump();
+        }
+
+        // Timer for perodic speed increase
+        accumulator += Time.deltaTime;
+        if (accumulator >= waitTime)
+        {
+            jumpSpeed += jumpSpeedAdd;
+            accumulator = 0f;
         }
     }
 
