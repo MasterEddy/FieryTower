@@ -20,14 +20,12 @@ public class WallController : MonoBehaviour {
         //float viewPos = camera_component.WorldToViewportPoint()
         for (int i = 0; i < walls_bottom.Length; i++)
         {
-            Vector3 target = new Vector3(camera.transform.position.x, walls_bottom[i].transform.position.y - GetObjectExtents(walls_bottom[i]), camera.transform.position.z + 1f);
+            float obj_extent = GetObjectExtents(walls_bottom[i]);
+            Vector3 target = new Vector3(camera.transform.position.x, walls_bottom[i].transform.position.y + obj_extent, 0f);
             Vector3 viewPos = camera_component.WorldToViewportPoint(target);
-            Debug.Log(viewPos);
-            //walls_bottom[i].transform.Translate(-moveUp);
-            //walls_top[i].transform.Translate(-moveUp);
-            if (walls_bottom[i].transform.position.y < camera.transform.position.y - 7f)
+            if (viewPos.y < 0f)
             {
-                walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, camera.transform.position.y + 1.95f, walls_bottom[i].transform.position.z);
+                walls_bottom[i].transform.position = new Vector3(walls_bottom[i].transform.position.x, walls_bottom[i].transform.position.y + obj_extent*2*3, walls_bottom[i].transform.position.z);
             }
         }
 	}
